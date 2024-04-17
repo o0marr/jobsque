@@ -1,0 +1,12 @@
+{
+  "name": "Omar",
+  "welcomeAgain":"Welcome Again" ,
+  "youCanRegisterNow": "YouCanRegisterNow",
+  "phone": "Phone",
+  "password": "Password",
+  "forgetPassword": "Forget Password",
+  "login": "Login",
+  "registerNow": "Register Now",
+  "noAccount": "Don't Have Account",
+  "haveAccount": "Have Already An Account"
+}
