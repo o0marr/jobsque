@@ -102,7 +102,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                             return AppButton(text:
                             "Request password reset",
                               onPress: ()  {
-                                navigateTo(PasswordChangedView());
+                                navigateTo(CheckEmailView());
                               },
 
                             );

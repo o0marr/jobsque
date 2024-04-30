@@ -30,44 +30,46 @@ class _ApplyViewState extends State<ApplyView> {
         title: Text("Apply Job"),
         centerTitle: true,
       ),
-      body: Stepper(
+      body: SizedBox(
+        child: Stepper(
 
 
-          type: StepperType.horizontal,
-          steps: getSteps(),
-          currentStep: currentStep,
+            type: StepperType.horizontal,
+            steps: getSteps(),
+            currentStep: currentStep,
 
-          onStepContinue: () {
-            final isLastStep = currentStep==getSteps().length-1;
-            if(isLastStep){
-              print("Completed");
-            }else{
-              setState(() => currentStep += 1,);
-            };
+            onStepContinue: () {
+              final isLastStep = currentStep==getSteps().length-1;
+              if(isLastStep){
+                print("Completed");
+              }else{
+                setState(() => currentStep += 1,);
+              };
 
-          },
-        onStepTapped: (step) =>setState(() => currentStep=step,),
-          onStepCancel: () {
-         currentStep == 0 ? null:  setState(() => currentStep -= 1,);
+            },
+          onStepTapped: (step) =>setState(() => currentStep=step,),
+            onStepCancel: () {
+           currentStep == 0 ? null:  setState(() => currentStep -= 1,);
 
-          },
-          controlsBuilder: (context, onStepContinue) {
-            return Container(
-              margin: EdgeInsets.only(top: 50),
-              child: Row(children: [
-                Expanded(child: ElevatedButton(onPressed:() {
-                  final isLastStep = currentStep==getSteps().length-1;
-                  if(isLastStep){
-                    print("Completed");
-                    navigateTo(UploadProfileView());
-                  }else{
-                    setState(() => currentStep += 1,);
-                  };
-                },  child: Text("Next")))
-              ]),
-            );
-          },
+            },
+            controlsBuilder: (context, onStepContinue) {
+              return Container(
+                margin: EdgeInsets.only(top: 50),
+                child: Row(children: [
+                  Expanded(child: ElevatedButton(onPressed:() {
+                    final isLastStep = currentStep==getSteps().length-1;
+                    if(isLastStep){
+                      print("Completed");
+                      navigateTo(UploadProfileView());
+                    }else{
+                      setState(() => currentStep += 1,);
+                    };
+                  },  child: Text("Next")))
+                ]),
+              );
+            },
 
+        ),
       ),
     );
   }
@@ -253,7 +255,7 @@ class _ApplyViewState extends State<ApplyView> {
                   ),
                   SizedBox(height: 16,),
                   Container(
-                    width: 327,
+                    width: 330,
                     height: 81,
                     decoration: BoxDecoration(
 
@@ -274,7 +276,7 @@ class _ApplyViewState extends State<ApplyView> {
                           ],
                         ),
                         SizedBox(
-                          width: 100,
+                          width: 80,
                         ),
                         Radio(
                           value: 4,
@@ -327,16 +329,14 @@ class _ApplyViewState extends State<ApplyView> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           AppImage("pdf.png",height: 40,
-                          width: 40,),
+                            width: 40,),
                           Column(
                             children: [
-                              Text("Rafif Dian.CV", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+                              Text("UI/UX Designer", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
                               Text("CV.pdf 300KB", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),),
                             ],
                           ),
-                          SizedBox(
-                            width: 70,
-                          ),
+                          Spacer(),
                           IconButton(onPressed: () {
 
                           },icon:AppImage("edit-2.png",height: 24,width: 24,),),

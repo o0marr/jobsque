@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/design/app_input.dart';
+import 'package:jobsque/main/main/apply_job/apply/view.dart';
+import 'package:jobsque/main/main/apply_job/job_details/view.dart';
+import 'package:jobsque/main/main/apply_job/view.dart';
 import 'package:jobsque/main/main/home_screen/mail/view.dart';
 import 'package:jobsque/main/main/home_screen/messages/view.dart';
 import 'package:jobsque/main/main/home_screen/notification/view.dart';
 import 'package:jobsque/main/main/home_screen/saved/view.dart';
 import 'package:jobsque/main/main/home_screen/searches/view.dart';
+import 'package:jobsque/main/main/profile/view.dart';
 
 import '../../../../core/logic/helper_methods.dart';
-import '../../apply_job/job_details/components/descreption/page.dart';
 
 class HiView extends StatefulWidget {
   const HiView({Key? key}) : super(key: key);
@@ -147,7 +150,8 @@ class _HiViewState extends State<HiView> {
                               ),
                               Spacer(),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                  },
                                   icon: Icon(
                                     Icons.archive_outlined,
                                     color: Colors.white,
@@ -216,7 +220,10 @@ class _HiViewState extends State<HiView> {
                                 height: 25,
                                 width: 96,
                                 child: FilledButton(
-                                    onPressed: () {}, child: Text("Apply now")),
+                                    onPressed: () {
+                                      navigateTo(JobDetails());
+
+                                    }, child: Text("Apply now")),
                               )
                             ],
                           )
@@ -327,7 +334,9 @@ class _HiViewState extends State<HiView> {
                                 height: 25,
                                 width: 96,
                                 child: FilledButton(
-                                    onPressed: () {}, child: Text("Apply now")),
+                                    onPressed: () {
+                                      navigateTo(JobDetails());
+                                    }, child: Text("Apply now")),
                               )
                             ],
                           )
@@ -441,7 +450,9 @@ class _HiViewState extends State<HiView> {
                                 height: 25,
                                 width: 96,
                                 child: FilledButton(
-                                    onPressed: () {}, child: Text("Apply now")),
+                                    onPressed: () {
+                                      navigateTo(JobDetails());
+                                    }, child: Text("Apply now")),
                               )
                             ],
                           )
@@ -552,7 +563,9 @@ class _HiViewState extends State<HiView> {
                                 height: 25,
                                 width: 96,
                                 child: FilledButton(
-                                    onPressed: () {}, child: Text("Apply now")),
+                                    onPressed: () {
+                                      navigateTo(JobDetails());
+                                    }, child: Text("Apply now")),
                               )
                             ],
                           )
@@ -666,7 +679,9 @@ class _HiViewState extends State<HiView> {
                                 height: 25,
                                 width: 96,
                                 child: FilledButton(
-                                    onPressed: () {}, child: Text("Apply now")),
+                                    onPressed: () {
+                                      navigateTo(JobDetails());
+                                    }, child: Text("Apply now")),
                               )
                             ],
                           )
@@ -778,7 +793,9 @@ class _HiViewState extends State<HiView> {
                                 height: 25,
                                 width: 96,
                                 child: FilledButton(
-                                    onPressed: () {}, child: Text("Apply now")),
+                                    onPressed: () {
+                                      navigateTo(JobDetails());
+                                    }, child: Text("Apply now")),
                               )
                             ],
                           )
@@ -1255,8 +1272,14 @@ class _HiViewState extends State<HiView> {
             if (newIndex == 1) {
               navigateTo(MessagesView());
             };
+            if (newIndex == 2) {
+              navigateTo(ApplyJobView());
+            };
             if (newIndex == 3) {
               navigateTo(SavedView());
+            };
+            if (newIndex == 4) {
+              navigateTo(ProfileView());
             };
           });
         },

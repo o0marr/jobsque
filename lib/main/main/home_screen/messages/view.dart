@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jobsque/core/design/app_image.dart';
+import 'package:jobsque/main/main/apply_job/view.dart';
 import 'package:jobsque/main/main/home_screen/mail/view.dart';
 import 'package:jobsque/main/main/home_screen/messages/archive/view.dart';
 import 'package:jobsque/main/main/home_screen/messages/unread/view.dart';
 import 'package:jobsque/main/main/home_screen/saved/view.dart';
+import 'package:jobsque/main/main/profile/view.dart';
 
 import '../../../../../core/design/app_input.dart';
 import '../../../../core/logic/helper_methods.dart';
@@ -196,7 +198,9 @@ class _MessagesViewState extends State<MessagesView> {
                 alignment: Alignment.center,
               ),
               SizedBox(height: 20,),
-              Container(
+              IconButton(onPressed: () {
+                navigateTo(MailView());
+              }, icon: Container(
                 width: 327,
                 height: 54,
                 child: Row(children: [
@@ -214,7 +218,8 @@ class _MessagesViewState extends State<MessagesView> {
 
 
                 ]),
-              ),
+              ), ),
+
               SizedBox(height: 12,),
               Container(
                 width: 327,
@@ -222,8 +227,11 @@ class _MessagesViewState extends State<MessagesView> {
                 color: Color(0xffE5E7EB),
                 alignment: Alignment.center,
               ),
+
               SizedBox(height: 20,),
-              Container(
+              IconButton(onPressed: () {
+                navigateTo(MailView());
+              }, icon: Container(
                 width: 327,
                 height: 54,
                 child: Row(children: [
@@ -241,16 +249,19 @@ class _MessagesViewState extends State<MessagesView> {
 
 
                 ]),
-              ),
+              ),),
+
               SizedBox(height: 12,),
-              Container(
-                width: 327,
-                height: 1,
-                color: Color(0xffE5E7EB),
-                alignment: Alignment.center,
-              ),
+               Container(
+               width: 327,
+               height: 1,
+               color: Color(0xffE5E7EB),
+               alignment: Alignment.center,
+             ),
               SizedBox(height: 20,),
-              Container(
+              IconButton(onPressed: () {
+                navigateTo(MailView());
+              }, icon: Container(
                 width: 327,
                 height: 54,
                 child: Row(children: [
@@ -268,16 +279,18 @@ class _MessagesViewState extends State<MessagesView> {
 
 
                 ]),
-              ),
+              ),),
               SizedBox(height: 12,),
-              Container(
+                Container(
                 width: 327,
                 height: 1,
                 color: Color(0xffE5E7EB),
                 alignment: Alignment.center,
               ),
               SizedBox(height: 20,),
-              Container(
+              IconButton(onPressed: () {
+                navigateTo(MailView());
+              }, icon: Container(
                 width: 327,
                 height: 54,
                 child: Row(children: [
@@ -295,16 +308,18 @@ class _MessagesViewState extends State<MessagesView> {
 
 
                 ]),
-              ),
+              ),),
               SizedBox(height: 12,),
-              Container(
+             Container(
                 width: 327,
                 height: 1,
                 color: Color(0xffE5E7EB),
                 alignment: Alignment.center,
               ),
               SizedBox(height: 20,),
-              Container(
+              IconButton(onPressed: () {
+                navigateTo(MailView());
+              }, icon: Container(
                 width: 327,
                 height: 54,
                 child: Row(children: [
@@ -322,7 +337,7 @@ class _MessagesViewState extends State<MessagesView> {
 
 
                 ]),
-              ),
+              ),),
               SizedBox(height: 12,),
               Container(
                 width: 327,
@@ -349,8 +364,14 @@ class _MessagesViewState extends State<MessagesView> {
             if (newIndex == 1) {
               navigateTo(MessagesView());
             };
+            if (newIndex == 2) {
+              navigateTo(ApplyJobView());
+            };
             if (newIndex == 3) {
               navigateTo(SavedView());
+            };
+            if (newIndex == 4) {
+              navigateTo(ProfileView());
             };
           });
         },

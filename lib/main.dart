@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jobsque/main/auth/create_password/view.dart';
 import 'package:jobsque/main/auth/edit_profile/view.dart';
+import 'package:jobsque/main/auth/job_title/job_title.dart';
+import 'package:jobsque/main/auth/location/view.dart';
 import 'package:jobsque/main/auth/login/login.dart';
 import 'package:jobsque/main/auth/onboarding1/onboarding1.dart';
 import 'package:jobsque/main/auth/password_changed/view.dart';
@@ -11,7 +13,13 @@ import 'package:jobsque/main/auth/register/register.dart';
 import 'package:jobsque/main/auth/reset_password/reset_password.dart';
 import 'package:jobsque/main/main/apply_job/apply/view.dart';
 import 'package:jobsque/main/main/apply_job/job_details/view.dart';
+import 'package:jobsque/main/main/apply_job/view.dart';
+import 'package:jobsque/main/main/home_screen/hi/view.dart';
 import 'package:jobsque/main/main/home_screen/search_not_found/view.dart';
+import 'package:jobsque/main/main/home_screen/searches2/view%20.dart';
+import 'package:jobsque/main/main/profile/complete_profile/view.dart';
+import 'package:jobsque/main/main/profile/language/view.dart';
+import 'package:jobsque/main/main/profile/view.dart';
 
 import 'core/logic/cache_helper.dart';
 import 'core/logic/helper_methods.dart';
@@ -20,7 +28,12 @@ import 'firebase_options.dart';
 import 'main/auth/splach/Splach.dart';
 import 'main/main/apply_job/apply/view.dart';
 import 'main/main/profile/Phone_number/view.dart';
-import 'main/main/profile/login_security/page.dart';
+import 'main/main/profile/edit_profile/view.dart';
+import 'main/main/profile/help_center/view.dart';
+import 'main/main/profile/login_and_security/view.dart';
+import 'main/main/profile/privacy_policy/view.dart';
+import 'main/main/profile/terms_conditions/view.dart';
+import 'main/main/profile/two_step_verification/send_code/view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +59,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      child: ApplyView(),
+      child:SplachView(),
       designSize:  Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
@@ -60,7 +73,7 @@ class MyApp extends StatelessWidget {
           locale: context.locale,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            fontFamily: "Tajawal",
+            fontFamily: "Sfpro",
             scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff0300ae)),
             useMaterial3: true,

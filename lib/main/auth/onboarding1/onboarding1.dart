@@ -1,200 +1,104 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
-import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
-import 'package:jobsque/main/auth/onboarding2/onboarding2.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:jobsque/main/auth/register/register.dart';
 
-import '../../../features/auth/auth/slider/bloc.dart';
-
+import '../../../core/design/onboarding.dart';
 class OnBoarding1View extends StatefulWidget {
-  const OnBoarding1View({Key? key}) : super(key: key);
+  const OnBoarding1View({super.key});
 
   @override
-  State<OnBoarding1View> createState() => _OnBoarding1ViewState();
+  State<OnBoarding1View> createState() => _OnBoardingState();
 }
 
-class _OnBoarding1ViewState extends State<OnBoarding1View> {
-  int currentImage = 0;
-  final bloc = GetIt.I<SliderBloc>()..add(GetSliderEvent());
+class _OnBoardingState extends State<OnBoarding1View> {
+  final _pageController = PageController(initialPage: 0);
+  int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
-  return BlocBuilder(
-  bloc: bloc,
-  builder: (context,state) {
-  if (state is GetSliderFailedState) {
-  return Text(state.msg);
-  } else if (state is GetSliderSuccessState) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      body: SingleChildScrollView(
-        child: Container(
-          color: Colors.transparent,
-          height: MediaQuery.of(context).size.height,
-          child: SafeArea(
-            child: Stack(
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: [
+            PageView(
+              controller: _pageController,
+              onPageChanged: (value) {
+                setState(() {
+                  _currentPage = value;
+                });
+              },
               children: [
-                SizedBox(
-                  height: 20,
+                OnBoardingScreen(
+                  imageUrl: 'assets/images/Background.png',
+                  heading: 'Find a job, and ',
+                  headingText: 'start building ',
+                  paragraph:
+                  'Explore over 25,924 available job roles and \n upgrade your operator now.',
+                  headingOne: 'your career from now on',
                 ),
-                AppImage(
-                  "Background.png",
-                  height: 281,
-                  width: double.infinity,
-                  fit: BoxFit.fitWidth,
+                OnBoardingScreen(
+                  heading: 'Hundreds of jobs are ',
+                  headingText: 'join together',
+                  imageUrl: 'assets/images/persons.png',
+                  paragraph:
+                  'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document',
+                  headingOne: 'waiting for you to',
                 ),
-                Align(
-                  alignment: AlignmentDirectional.bottomCenter,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 6.5,
-                    width: double.infinity,
-                    padding: EdgeInsets.only(
-                      left: 15,
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(children: [
-                        Row(
-                          children: [
-                            AppImage(
-                              "logo1.png",
-                              width: 81.w,
-                              height: 19.h,
-                            ),
-                            SizedBox(
-                              width: 232,
-                            ),
-                            TextButton(onPressed: () {}, child: Text("Skip")),
-                          ],
-                        ),
-                      ]),
-                    ),
-                  ),
+                OnBoardingScreen(
+                  heading: 'with your friends',
+                  headingText: 'Connect ',
+                  imageUrl: 'assets/images/personi.png',
+                  paragraph:
+                  'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document',
+                  headingOne: '',
                 ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 310,
-                    ),
-                    SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          left: 24,
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Text(
-                                "Find a job, and start\nbuilding your career\nfrom now on ",
-                                style: TextStyle(
-                                    fontSize: 32, fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 24,
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            child: Text(
-                              "Explore over 25,924 available job roles and\nupgrade your operator now.",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff6B7280)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 18,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 16.h),
-                      child: Stack(
-                        alignment: AlignmentDirectional.bottomCenter,
-                        children: [
-                          CarouselSlider.builder(
-                            options: CarouselOptions(
-                              autoPlay: true,
-                              enlargeCenterPage: true,
-                              onScrolled: (value) {},
-                              viewportFraction: 1,
-                              onPageChanged: (index, reason) {
-                                currentImage = index;
-                                setState(() {
-                                  navigateTo(Onboarding2View());
-                                });
-                              },
-                              autoPlayCurve: Curves.linear,
-                            ),
-                            itemCount: 3,
-                            itemBuilder: (BuildContext context, int itemIndex,
-                                int pageViewIndex) =>
-                                AppImage(
-                                  state.msg,
-                                  width: double.infinity,
-                                ),
-                          ),
-
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 49.5,
-                    ),
-                    FilledButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Onboarding2View()));
-                      },
-                      child: Text("Next"),
-                    ),
-                  ],
-                )
               ],
             ),
-          ),
-        ),
-      ),
-    );
+            Positioned(
+              top: 664.h,
+              left: 174.w,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 8.h),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(
+                    3,
+                        (index) =>
+                        Padding(
+                          padding: EdgeInsetsDirectional.only(end: 2.w),
+                          child: CircleAvatar(
+                            radius: 4.w,
+                            backgroundColor: _currentPage == index
+                                ? Color(0xffADC8FF)
+                                : Theme
+                                .of(context)
+                                .primaryColor,
+                          ),
+                        ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 24,
+              top: 708.h,
+              child: SizedBox(
+                width: 327.w,
+                child: FilledButton(
+                    onPressed: () {
+                      _pageController.nextPage(
+                          duration: Duration(microseconds: 500),
+                          curve: Curves.ease);
+                      if(_currentPage==2){
+                        navigateTo(RegisterView());
+                      };
 
-
-  }else {
-  return _Loading();
-  }
-  }
-  );
-  }
-}
-class _Loading extends StatelessWidget {
-  const _Loading({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Shimmer.fromColors(
-        child: Container(
-          height: double.infinity,
-          margin: EdgeInsets.only(top: 16),
-          width: double.infinity,
-          color: Colors.grey.withOpacity(.6),
-        ),
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.white,
-      ),
-    );
+                    },
+                    child: const Text("Next")),
+              ),
+            ),
+          ],
+        ));
   }
 }

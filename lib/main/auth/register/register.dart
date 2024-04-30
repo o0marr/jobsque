@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:jobsque/core/design/app_button.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
 import 'package:jobsque/main/auth/job_title/job_title.dart';
+import 'package:jobsque/main/auth/login/login.dart';
 
 import '../../../core/design/app_image.dart';
 import '../../../core/design/app_input.dart';
@@ -109,7 +110,9 @@ class _RegisterViewState extends State<RegisterView> {
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                navigateTo(LoginView());
+                              },
                               child: Text(
                                 "Login",
                                 style: TextStyle(

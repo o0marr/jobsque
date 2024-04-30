@@ -9,6 +9,8 @@ import 'package:jobsque/core/logic/helper_methods.dart';
 import 'package:jobsque/core/logic/input_validator.dart';
 import 'package:jobsque/features/auth/auth/login/bloc.dart';
 import 'package:jobsque/main/auth/job_title/job_title.dart';
+import 'package:jobsque/main/auth/reset_password/reset_password.dart';
+import 'package:jobsque/main/main/home_screen/hi/view.dart';
 
 import '../../../core/design/app_button.dart';
 import '../../../core/design/app_input.dart';
@@ -32,9 +34,7 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: AppImage("logo1.png"),
 
-        leading: IconButton(  onPressed: () {
-          
-        },icon: Icon(Icons.arrow_back) ,),
+
       ),
       body: Form(
         key: bloc.formKey,
@@ -110,7 +110,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         Spacer(),
                         TextButton(onPressed: () {
-
+                          navigateTo(ResetPasswordView());
                         }, child: Text("Forget password?",style: TextStyle(color: Colors.blue,fontSize: 14,fontWeight: FontWeight.w400),))
                       ],
                     ),
@@ -148,7 +148,7 @@ class _LoginViewState extends State<LoginView> {
                             return AppButton(text:
                             "Login",
                               onPress: () async {
-                                navigateTo(JobTitleView());
+                                navigateTo(HiView());
                               },
 
                             );

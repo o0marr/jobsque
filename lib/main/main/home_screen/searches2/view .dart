@@ -421,7 +421,7 @@ class _Searches2ViewState extends State<Searches2View> {
                                 separatorBuilder: (context, index) => SizedBox(
                                       height: 800,
                                     ),
-                                itemCount: 12);
+                                itemCount: 1);
                           },
                         );
                       },

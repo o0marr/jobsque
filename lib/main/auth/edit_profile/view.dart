@@ -9,7 +9,6 @@ import 'package:jobsque/core/logic/helper_methods.dart';
 import 'package:jobsque/core/logic/input_validator.dart';
 import 'package:jobsque/features/auth/my_account/profile/edit_profile/bloc.dart';
 import 'package:jobsque/main/auth/job_title/job_title.dart';
-import 'package:jobsque/main/auth/onboarding2/onboarding2.dart';
 
 import '../../../core/design/app_button.dart';
 import '../../../core/design/app_input.dart';

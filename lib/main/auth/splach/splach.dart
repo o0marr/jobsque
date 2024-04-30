@@ -19,9 +19,9 @@ class _SplachViewState extends State<SplachView> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3), () {
-      if(CachHelper.isAuth){
+
         navigateTo(OnBoarding1View(),KeepHistory: false);
-      }
+
 
     });
   }

@@ -14,6 +14,7 @@ class _ToggleButtonState extends State<ToggleButton> {
   Widget build(BuildContext context) {
     return Center(
       child: Switch(
+        activeColor: Colors.blue,
         value: isSwitched,
         onChanged: (value) {
           setState(() {

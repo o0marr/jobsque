@@ -8,6 +8,7 @@ import 'package:jobsque/core/design/app_input.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
 import 'package:jobsque/features/auth/auth/create_new_password/bloc.dart';
 import 'package:jobsque/main/auth/check_email/view.dart';
+import 'package:jobsque/main/auth/password_changed/view.dart';
 
 class CreatePasswordView extends StatefulWidget {
   const CreatePasswordView({Key? key}) : super(key: key);
@@ -96,7 +97,7 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
                             return AppButton(text:
                             "Reset password",
                               onPress: () async {
-                                navigateTo(CreatePasswordView());
+                                navigateTo(PasswordChangedView());
                               },
 
                             );

@@ -1,3 +1,4 @@
+import 'package:jobsque/features/auth/auth/check_email/bloc.dart';
 import 'package:jobsque/features/auth/auth/create_new_password/bloc.dart';
 import 'package:jobsque/features/auth/auth/job_title/bloc.dart';
 import 'package:jobsque/features/auth/auth/login/bloc.dart';
@@ -24,6 +25,7 @@ void initGetIt(){
   container.registerFactory(() =>  EditProfileBloc());
   container.registerFactory(() =>  LoginAndSecurityBloc());
   container.registerFactory(() =>  PhoneNumberBloc());
+  container.registerFactory(() =>  CheckEmailBloc());
 
 
 }

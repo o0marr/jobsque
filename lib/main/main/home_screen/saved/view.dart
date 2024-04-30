@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
+import 'package:jobsque/main/main/apply_job/view.dart';
 import 'package:jobsque/main/main/home_screen/hi/view.dart';
 import 'package:jobsque/main/main/home_screen/messages/view.dart';
 import 'package:jobsque/main/main/home_screen/saved/empty_save/view.dart';
+import 'package:jobsque/main/main/profile/view.dart';
 
 class SavedView extends StatefulWidget {
   const SavedView({Key? key}) : super(key: key);
@@ -193,7 +195,7 @@ class _SavedViewState extends State<SavedView> {
                                       SizedBox(
                                         height: 150,
                                       ),
-                                  itemCount: 3);
+                                  itemCount: 1);
                             },
                           );
                         },
@@ -2271,16 +2273,19 @@ class _SavedViewState extends State<SavedView> {
             _currentIndex = newIndex;
             if (newIndex == 0) {
               navigateTo(HiView());
-            }
-            ;
+            };
             if (newIndex == 1) {
               navigateTo(MessagesView());
-            }
-            ;
+            };
+            if (newIndex == 2) {
+              navigateTo(ApplyJobView());
+            };
             if (newIndex == 3) {
               navigateTo(SavedView());
-            }
-            ;
+            };
+            if (newIndex == 4) {
+              navigateTo(ProfileView());
+            };
           });
         },
         items: const [
