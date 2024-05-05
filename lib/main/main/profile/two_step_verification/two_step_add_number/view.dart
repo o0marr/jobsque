@@ -5,7 +5,6 @@ import 'package:jobsque/main/main/profile/two_step_verification/view.dart';
 import '../../../../../core/design/app_button.dart';
 import '../../../../../core/design/app_input.dart';
 import '../../../../../core/logic/helper_methods.dart';
-import '../../../../../features/auth/my_account/profile/phone_number/bloc.dart';
 import '../send_code/view.dart';
 
 
@@ -17,7 +16,6 @@ class TwoStepAddNumberView extends StatefulWidget {
 }
 
 class _TwoStepAddNumberViewState extends State<TwoStepAddNumberView> {
-  final bloc = GetIt.I<PhoneNumberBloc>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +39,6 @@ class _TwoStepAddNumberViewState extends State<TwoStepAddNumberView> {
             Text("We will send a verification code to this number",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: Color(0xff6B7280)),),
             SizedBox(height: 16,),
             AppInput(
-              controller: bloc.phonenumber,
               label: "0100-666-7234",
               inputType: TextInputType.text,
               prefixIcon: "FLAG.png",

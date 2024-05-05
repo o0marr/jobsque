@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
+import 'package:get_it/get_it.dart';
 import 'package:jobsque/core/design/app_button.dart';
 import 'package:jobsque/core/design/file_picker.dart';
+import 'package:jobsque/features/main/home_screen/filter/get_all_jobs/bloc.dart';
 import 'package:jobsque/main/main/apply_job/apply/view.dart';
 import 'package:jobsque/main/main/apply_job/upload_profile/view.dart';
 import 'package:jobsque/main/main/home_screen/messages/view.dart';
 import 'package:jobsque/main/main/home_screen/saved/view.dart';
 import 'package:jobsque/main/main/profile/view.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../core/design/app_image.dart';
 import '../../../core/design/app_input.dart';
@@ -22,6 +26,8 @@ class ApplyJobView extends StatefulWidget {
 }
 
 class _ApplyJobViewState extends State<ApplyJobView> {
+  final bloc = GetIt.I<GetAllJobsBloc>()..add(GetGetAllJobsEvent());
+
   int _currentIndex = 0;
   List<Widget> body = const [
     Icon(Icons.home),
@@ -70,7 +76,7 @@ class _ApplyJobViewState extends State<ApplyJobView> {
 
         }, icon: Icon(Icons.arrow_back)),
       ),
-      body: Column(
+      body:  Column(
         children: [
           Container(
             padding: EdgeInsets.only(top: 32, left: 15),
@@ -145,665 +151,665 @@ class _ApplyJobViewState extends State<ApplyJobView> {
                                 children: [
                                   Container(
                                       child: Column(children: [
-                                    Row(
-                                      children: [
-                                        AppImage(
-                                          "Zoom.png",
-                                          height: 40,
-                                          width: 40,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
+                                        Row(
                                           children: [
-                                            Text(
-                                              "Product Designer",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18,
+                                            AppImage(
+                                              "Zoom.png",
+                                              height: 40,
+                                              width: 40,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Column(
+                                              children: [
+                                                Text(
+                                                  "Product Designer",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "Zoom • United States",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            GestureDetector(
+                                              onTap: toggleSelection,
+                                              child: Container(
+                                                width: 30,
+                                                height: 30,
+                                                child: AppImage(isSelected2
+                                                    ? "archive.png"
+                                                    : "archive_selected.png"),
                                               ),
-                                            ),
-                                            Text(
-                                              "Zoom • United States",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12),
-                                            ),
+                                            )
                                           ],
                                         ),
-                                        Spacer(),
-                                        GestureDetector(
-                                          onTap: toggleSelection,
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            child: AppImage(isSelected2
-                                                ? "archive.png"
-                                                : "archive_selected.png"),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(children: [
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text("FullTime"),
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text(
+                                              "Remote",
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Text("Posted 2 days ago"),
+                                        ]),
+                                        Container(
+                                          height: 100,
+                                          width: 327,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(8)),
+                                          padding: EdgeInsets.only(
+                                              top: 12, right: 10, bottom: 12, left: 10),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("1"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Biodata",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 60,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                        radius: 20,
+                                                        child: IconButton(
+                                                          onPressed: () {
+                                                            navigateTo(ApplyView());
+                                                          },
+                                                          icon: Text("2"),
+                                                        )),
+                                                    Text(
+                                                      "Type of work",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 50,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("3"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Upload portfolio",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(children: [
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text("FullTime"),
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text(
-                                          "Remote",
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      Text("Posted 2 days ago"),
-                                    ]),
-                                    Container(
-                                      height: 100,
-                                      width: 327,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8)),
-                                      padding: EdgeInsets.only(
-                                          top: 12, right: 10, bottom: 12, left: 10),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("1"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Biodata",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 60,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                    radius: 20,
-                                                    child: IconButton(
-                                                      onPressed: () {
-                                                        navigateTo(ApplyView());
-                                                      },
-                                                      icon: Text("2"),
-                                                    )),
-                                                Text(
-                                                  "Type of work",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("3"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Upload portfolio",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ])),
+                                      ])),
                                   SizedBox(
                                     height: 24,
                                   ),
                                   Container(
                                       child: Column(children: [
-                                    Row(
-                                      children: [
-                                        AppImage(
-                                          "Zoom.png",
-                                          height: 40,
-                                          width: 40,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
+                                        Row(
                                           children: [
-                                            Text(
-                                              "Product Designer",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18,
+                                            AppImage(
+                                              "Zoom.png",
+                                              height: 40,
+                                              width: 40,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Column(
+                                              children: [
+                                                Text(
+                                                  "Product Designer",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "Zoom • United States",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            GestureDetector(
+                                              onTap: toggleSelection,
+                                              child: Container(
+                                                width: 30,
+                                                height: 30,
+                                                child: AppImage(isSelected3
+                                                    ? "archive.png"
+                                                    : "archive_selected.png"),
                                               ),
-                                            ),
-                                            Text(
-                                              "Zoom • United States",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12),
-                                            ),
+                                            )
                                           ],
                                         ),
-                                        Spacer(),
-                                        GestureDetector(
-                                          onTap: toggleSelection,
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            child: AppImage(isSelected3
-                                                ? "archive.png"
-                                                : "archive_selected.png"),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(children: [
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text("FullTime"),
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text(
+                                              "Remote",
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Text("Posted 2 days ago"),
+                                        ]),
+                                        Container(
+                                          height: 100,
+                                          width: 327,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(8)),
+                                          padding: EdgeInsets.only(
+                                              top: 12, right: 10, bottom: 12, left: 10),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("1"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Biodata",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 60,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                        radius: 20,
+                                                        child: IconButton(
+                                                          onPressed: () {
+                                                            navigateTo(ApplyView());
+                                                          },
+                                                          icon: Text("2"),
+                                                        )),
+                                                    Text(
+                                                      "Type of work",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 50,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("3"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Upload portfolio",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(children: [
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text("FullTime"),
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text(
-                                          "Remote",
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      Text("Posted 2 days ago"),
-                                    ]),
-                                    Container(
-                                      height: 100,
-                                      width: 327,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8)),
-                                      padding: EdgeInsets.only(
-                                          top: 12, right: 10, bottom: 12, left: 10),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("1"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Biodata",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 60,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                    radius: 20,
-                                                    child: IconButton(
-                                                      onPressed: () {
-                                                        navigateTo(ApplyView());
-                                                      },
-                                                      icon: Text("2"),
-                                                    )),
-                                                Text(
-                                                  "Type of work",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("3"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Upload portfolio",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ])),
+                                      ])),
                                   SizedBox(
                                     height: 24,
                                   ),
                                   Container(
                                       child: Column(children: [
-                                    Row(
-                                      children: [
-                                        AppImage(
-                                          "Zoom.png",
-                                          height: 40,
-                                          width: 40,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
+                                        Row(
                                           children: [
-                                            Text(
-                                              "Product Designer",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18,
+                                            AppImage(
+                                              "Zoom.png",
+                                              height: 40,
+                                              width: 40,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Column(
+                                              children: [
+                                                Text(
+                                                  "Product Designer",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "Zoom • United States",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            GestureDetector(
+                                              onTap: toggleSelection,
+                                              child: Container(
+                                                width: 30,
+                                                height: 30,
+                                                child: AppImage(isSelected4
+                                                    ? "archive.png"
+                                                    : "archive_selected.png"),
                                               ),
-                                            ),
-                                            Text(
-                                              "Zoom • United States",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12),
-                                            ),
+                                            )
                                           ],
                                         ),
-                                        Spacer(),
-                                        GestureDetector(
-                                          onTap: toggleSelection,
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            child: AppImage(isSelected4
-                                                ? "archive.png"
-                                                : "archive_selected.png"),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(children: [
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text("FullTime"),
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text(
+                                              "Remote",
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Text("Posted 2 days ago"),
+                                        ]),
+                                        Container(
+                                          height: 100,
+                                          width: 327,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(8)),
+                                          padding: EdgeInsets.only(
+                                              top: 12, right: 10, bottom: 12, left: 10),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("1"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Biodata",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 60,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                        radius: 20,
+                                                        child: IconButton(
+                                                          onPressed: () {
+                                                            navigateTo(ApplyView());
+                                                          },
+                                                          icon: Text("2"),
+                                                        )),
+                                                    Text(
+                                                      "Type of work",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 50,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("3"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Upload portfolio",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(children: [
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text("FullTime"),
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text(
-                                          "Remote",
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      Text("Posted 2 days ago"),
-                                    ]),
-                                    Container(
-                                      height: 100,
-                                      width: 327,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8)),
-                                      padding: EdgeInsets.only(
-                                          top: 12, right: 10, bottom: 12, left: 10),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("1"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Biodata",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 60,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                    radius: 20,
-                                                    child: IconButton(
-                                                      onPressed: () {
-                                                        navigateTo(ApplyView());
-                                                      },
-                                                      icon: Text("2"),
-                                                    )),
-                                                Text(
-                                                  "Type of work",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("3"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Upload portfolio",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ])),
+                                      ])),
                                   SizedBox(
                                     height: 24,
                                   ),
                                   Container(
                                       child: Column(children: [
-                                    Row(
-                                      children: [
-                                        AppImage(
-                                          "Zoom.png",
-                                          height: 40,
-                                          width: 40,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
+                                        Row(
                                           children: [
-                                            Text(
-                                              "Product Designer",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18,
+                                            AppImage(
+                                              "Zoom.png",
+                                              height: 40,
+                                              width: 40,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Column(
+                                              children: [
+                                                Text(
+                                                  "Product Designer",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "Zoom • United States",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            GestureDetector(
+                                              onTap: toggleSelection,
+                                              child: Container(
+                                                width: 30,
+                                                height: 30,
+                                                child: AppImage(isSelected5
+                                                    ? "archive.png"
+                                                    : "archive_selected.png"),
                                               ),
-                                            ),
-                                            Text(
-                                              "Zoom • United States",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12),
-                                            ),
+                                            )
                                           ],
                                         ),
-                                        Spacer(),
-                                        GestureDetector(
-                                          onTap: toggleSelection,
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            child: AppImage(isSelected5
-                                                ? "archive.png"
-                                                : "archive_selected.png"),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(children: [
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text("FullTime"),
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Container(
+                                            width: 60,
+                                            height: 26,
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Color(0xffD6E4FF)),
+                                            child: Text(
+                                              "Remote",
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Text("Posted 2 days ago"),
+                                        ]),
+                                        Container(
+                                          height: 100,
+                                          width: 327,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(8)),
+                                          padding: EdgeInsets.only(
+                                              top: 12, right: 10, bottom: 12, left: 10),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("1"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Biodata",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 60,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                        radius: 20,
+                                                        child: IconButton(
+                                                          onPressed: () {
+                                                            navigateTo(ApplyView());
+                                                          },
+                                                          icon: Text("2"),
+                                                        )),
+                                                    Text(
+                                                      "Type of work",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 50,
+                                              ),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 20,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          isSelected
+                                                              ? Colors.black
+                                                              : Colors.blue;
+                                                          navigateTo(ApplyView());
+                                                        },
+                                                        icon: Text("3"),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Upload portfolio",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w400),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(children: [
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text("FullTime"),
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Container(
-                                        width: 60,
-                                        height: 26,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(left: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            color: Color(0xffD6E4FF)),
-                                        child: Text(
-                                          "Remote",
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      Text("Posted 2 days ago"),
-                                    ]),
-                                    Container(
-                                      height: 100,
-                                      width: 327,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8)),
-                                      padding: EdgeInsets.only(
-                                          top: 12, right: 10, bottom: 12, left: 10),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("1"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Biodata",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 60,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                    radius: 20,
-                                                    child: IconButton(
-                                                      onPressed: () {
-                                                        navigateTo(ApplyView());
-                                                      },
-                                                      icon: Text("2"),
-                                                    )),
-                                                Text(
-                                                  "Type of work",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 20,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      isSelected
-                                                          ? Colors.black
-                                                          : Colors.blue;
-                                                      navigateTo(ApplyView());
-                                                    },
-                                                    icon: Text("3"),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "Upload portfolio",
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ])),
+                                      ])),
                                 ],
                               )
                             ],
@@ -922,3 +928,24 @@ class _ApplyJobViewState extends State<ApplyJobView> {
     );
   }
 }
+class _Loading extends StatelessWidget {
+  const _Loading({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Shimmer.fromColors(
+        child: Container(
+          height: 180,
+          margin: EdgeInsets.only(top: 16),
+          width: double.infinity,
+          color: Colors.grey.withOpacity(.6),
+        ),
+        period: Duration(seconds: 2),
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.white,
+      ),
+    );
+  }
+}
+

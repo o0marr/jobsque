@@ -37,6 +37,7 @@ import 'main/main/profile/two_step_verification/send_code/view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      child:SplachView(),
+      child:ApplyJobView(),
       designSize:  Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,

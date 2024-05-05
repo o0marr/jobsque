@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:jobsque/core/design/app_input.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
-import 'package:jobsque/features/auth/my_account/profile/login_and_security/bloc.dart';
+import 'package:jobsque/features/main/my_account/profile/login_and_security/bloc.dart';
 
 import '../../../../core/design/app_button.dart';
 import '../../../auth/create_password/view.dart';

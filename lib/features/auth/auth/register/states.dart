@@ -2,16 +2,16 @@ part of 'bloc.dart';
 
 class RegisterStates {}
 
-class RegisterLoadingState extends RegisterStates {}
+class GetRegisterLoadingState extends RegisterStates {}
 
-class RegisterSuccessState extends RegisterStates {
+class GetRegisterSuccessState extends RegisterStates {
   final String msg;
 
-  RegisterSuccessState({required this.msg});
+  GetRegisterSuccessState({required this.msg});
 }
 
-class RegisterFailedState extends RegisterStates {
+class GetRegisterFailedState extends RegisterStates {
   final String msg;
 
-  RegisterFailedState({required this.msg});
+  GetRegisterFailedState({required this.msg});
 }

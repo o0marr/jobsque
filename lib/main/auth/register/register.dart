@@ -124,7 +124,7 @@ class _RegisterViewState extends State<RegisterView> {
                     BlocBuilder(
                         bloc: bloc,
                         builder: (context, state) {
-                          if (state is RegisterLoadingState) {
+                          if (state is GetRegisterLoadingState) {
                             return Center(
                               child: CircularProgressIndicator(),
                             );

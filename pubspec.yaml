@@ -42,6 +42,8 @@ dependencies:
   toggle_switch: ^2.2.2
   dropdown_button2: ^2.3.9
   flutter_toggle_tab: ^1.4.1
+  flutter_html: ^3.0.0-beta.2
+
 
 
 dev_dependencies:

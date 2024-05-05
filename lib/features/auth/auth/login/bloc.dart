@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'model.dart';
 part 'events.dart';
 part 'states.dart';
 class LoginBloc extends Bloc<LoginEvents, LoginStates> {
@@ -13,18 +16,13 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
 
 
   LoginBloc() : super(LoginStates()) {
-    on<LoginEvent>(_login);
+    on<GetLoginEvent>(_getData);
   }
-  Future<void> _login(
-    LoginEvent event,
-    Emitter<LoginStates> emit,
-  ) async{
-
-    if (formKey.currentState!.validate()) {
-          emit(LoginLoadingState());
-          await Future.delayed(Duration(seconds: 2));
-          emit(LoginSuccessState(msg: "Login Success"));
-          // navigateTo(HomePage(), KeepHistory: false);
-        }
+  Future<void> _getData(GetLoginEvent event,
+      Emitter<LoginStates> emit,) async {
+    emit(LoginLoadingState());
+    final response= await Dio().get("https://project2.amit-learning.com/api/profile/auth/auth/login?");
+    final model =Login.fromJson(response.data);
+    emit(LoginSuccessState(msg: "Success"));
   }
 }

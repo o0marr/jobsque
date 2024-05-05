@@ -8,7 +8,6 @@ import 'package:jobsque/main/main/profile/change_password/view.dart';
 import '../../../../core/design/app_button.dart';
 import '../../../../core/design/app_input.dart';
 import '../../../../core/logic/helper_methods.dart';
-import '../../../../features/auth/my_account/profile/phone_number/bloc.dart';
 
 class PhonenumberView extends StatefulWidget {
   const PhonenumberView({Key? key}) : super(key: key);
@@ -18,7 +17,6 @@ class PhonenumberView extends StatefulWidget {
 }
 
 class _PhonenumberViewState extends State<PhonenumberView> {
-  final bloc = GetIt.I<PhoneNumberBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +41,6 @@ class _PhonenumberViewState extends State<PhonenumberView> {
               height: 8,
             ),
             AppInput(
-              controller: bloc.phonenumber,
               label: "0100-666-7234",
               inputType: TextInputType.text,
               prefixIcon: "FLAG.png",
