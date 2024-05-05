@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:jobsque/core/design/app_button.dart';
 import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/design/app_input.dart';
+import 'package:jobsque/core/logic/helper_methods.dart';
+import 'package:jobsque/main/main/profile/complete_profile/portfolio/view.dart';
+
+import '../view.dart';
 
 
 class ExperienceView extends StatefulWidget {
@@ -222,6 +226,7 @@ class _ExperienceViewState extends State<ExperienceView> {
                         AppButton(text:
                         "Save",
                           onPress: () async {
+                            navigateTo(CompleteProfileView());
                           },),
 
                       ],

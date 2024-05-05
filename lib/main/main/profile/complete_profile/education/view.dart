@@ -3,7 +3,11 @@ import 'package:jobsque/core/design/app_button.dart';
 import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/design/app_input.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
+import 'package:jobsque/main/main/profile/complete_profile/experience/view.dart';
+import 'package:jobsque/main/main/profile/complete_profile/portfolio/view.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../view.dart';
 
 class EducationView extends StatefulWidget {
   const EducationView({Key? key}) : super(key: key);
@@ -140,6 +144,7 @@ class _EducationViewState extends State<EducationView> {
                     AppButton(text:
                     "Save",
                       onPress: () async {
+                        navigateTo(CompleteProfileView());
                       },),
 
                       ],

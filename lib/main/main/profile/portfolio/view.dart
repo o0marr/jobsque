@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobsque/core/design/file_picker.dart';
+import 'package:jobsque/main/main/profile/complete_profile/view.dart';
 import 'package:jobsque/main/main/profile/notification/view.dart';
 
 import '../../../../core/design/app_button.dart';
@@ -149,7 +150,7 @@ class PortfolioView extends StatelessWidget {
               AppButton(
                 text: "Save",
                 onPress: () async {
-                  navigateTo(NotificationView());
+                  navigateTo(CompleteProfileView());
                 },
               ),
             ],

@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jobsque/core/design/app_input.dart';
 import 'package:jobsque/features/auth/auth/edit_profile/bloc.dart';
+import 'package:jobsque/main/main/profile/complete_profile/education/view.dart';
 
 import '../../../../core/design/app_button.dart';
 import '../../../../core/logic/helper_methods.dart';
@@ -126,7 +127,7 @@ class _EditprofileViewState extends State<EditprofileView> {
                 AppButton(
                   text: "Save",
                   onPress: () async {
-                    navigateTo(PortfolioView());
+                    navigateTo(EducationView());
                   },
                 ),
               ],

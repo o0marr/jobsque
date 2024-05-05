@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobsque/core/logic/helper_methods.dart';
+import 'package:jobsque/main/auth/register/register.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen(
@@ -35,7 +37,7 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-
+                    navigateTo(RegisterView());
                   },
                     child: Text(
                   "Skip",

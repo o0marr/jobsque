@@ -5,7 +5,10 @@ import 'package:jobsque/main/main/profile/complete_profile/education/view.dart';
 import 'package:jobsque/main/main/profile/complete_profile/experience/view.dart';
 import 'package:jobsque/main/main/profile/complete_profile/personal_details/view.dart';
 import 'package:jobsque/main/main/profile/complete_profile/portfolio/view.dart';
+import 'package:jobsque/main/main/profile/view.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../../../../core/design/app_button.dart';
 
 
 class DoneView extends StatefulWidget {
@@ -272,6 +275,12 @@ class _DoneViewState extends State<DoneView> {
                       ),
                     ),
                     SizedBox(height: 20,),
+                    AppButton(
+                      text: "Save",
+                      onPress: () async {
+                        navigateTo(ProfileView());
+                      },
+                    ),
 
                   ],
                 ),

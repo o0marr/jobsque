@@ -117,6 +117,7 @@ class _PersonalDetailsViewState extends State<PersonalDetailsView> {
               AppButton(
                 text: "Save",
                 onPress: () async {
+                  navigateTo(CompleteProfileView());
                 },
               ),
             ],
