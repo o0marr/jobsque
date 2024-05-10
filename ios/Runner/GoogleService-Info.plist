@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBs5PF35vH0voVbanYGD7hV42y51R9mGes</string>
+	<key>GCM_SENDER_ID</key>
+	<string>332540629956</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.jobsque.jobsque</string>
+	<key>PROJECT_ID</key>
+	<string>jobsque-f2035</string>
+	<key>STORAGE_BUCKET</key>
+	<string>jobsque-f2035.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:332540629956:ios:eaf68b07fabafc584e0a91</string>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "332540629956",
+    "project_id": "jobsque-f2035",
+    "storage_bucket": "jobsque-f2035.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332540629956:android:1af7afb4a69fe71e4e0a91",
+        "android_client_info": {
+          "package_name": "com.jobsque.jobsque"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbKRDL5Ap0PEft5qJst9567RdUr2NonFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
