@@ -1,15 +1,21 @@
 part of 'bloc.dart';
 
-class LoginStates {}
+class GetLoginStates {}
 
-class LoginLoadingState extends LoginStates {}
+class GetLoginLoadingState extends GetLoginStates {}
 
-class LoginSuccessState extends LoginStates {
+class GetLoginSuccessState extends GetLoginStates {
   final String msg;
-  LoginSuccessState({required this.msg});
+  GetLoginSuccessState({required this.msg}){
+    showMessage(msg,isSuccess: true);
+
+  }
 }
 
-class LoginFailedState extends LoginStates {
+class GetLoginFailedState extends GetLoginStates {
   final String msg;
-  LoginFailedState({required this.msg});
+  GetLoginFailedState({required this.msg}){
+    showMessage(msg);
+
+  }
 }

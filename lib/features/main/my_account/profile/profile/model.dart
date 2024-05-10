@@ -1,17 +1,18 @@
-class Profile {
+class ProfileData {
 
-  late final ProfileData list;
+  late final List<ProfileDataModel> list;
   late final bool status;
 
-  Profile.fromJson(Map<String, dynamic> json){
-    list = ProfileData.fromJson(json['data']??[]);
+  ProfileData.fromJson(Map<String, dynamic> json){
+  list = List.from(json['data']??[]).map((e) => ProfileDataModel.fromJson(e)).toList();
+
     status = json['status'];
   }
 
 
 }
 
-class ProfileData {
+class ProfileDataModel {
 
   late final int id;
   late final String name;
@@ -19,13 +20,12 @@ class ProfileData {
   late final String createdAt;
   late final String updatedAt;
 
-  ProfileData.fromJson(Map<String, dynamic> json){
+  ProfileDataModel.fromJson(Map<String, dynamic> json){
     id = json['id'];
     name = json['name'];
     email = json['email'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-
 
 }

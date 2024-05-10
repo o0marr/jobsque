@@ -1,9 +1,9 @@
-class Register {
+class RegisterData {
 
   late final bool status;
   late final RegisterData massege;
 
-  Register.fromJson(Map<String, dynamic> json){
+  RegisterData.fromJson(Map<String, dynamic> json){
     status = json['status'];
     massege = RegisterData.fromJson(json['massege']);
   }
@@ -11,11 +11,11 @@ class Register {
 
 }
 
-class RegisterData {
+class RegisterModel {
  
   late final List<String> email;
 
-  RegisterData.fromJson(Map<String, dynamic> json){
+  RegisterModel.fromJson(Map<String, dynamic> json){
     email = List.castFrom<dynamic, String>(json['email']);
   }
 

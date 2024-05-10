@@ -1,17 +1,18 @@
-class EditProfile {
+
+class EditProfileData {
 
   late final bool status;
-  late final EditProfileData list;
+  late final List<EditProfileModel> list;
 
-  EditProfile.fromJson(Map<String, dynamic> json){
+  EditProfileData.fromJson(Map<String, dynamic> json){
     status = json['status'];
-    list = EditProfileData.fromJson(json['data']??[]);
+    list = List.from(json['data']??[]).map((e) => EditProfileModel.fromJson(e)).toList();
   }
 
 
 }
 
-class EditProfileData {
+class EditProfileModel {
 
   late final int id;
   late final String name;
@@ -20,7 +21,7 @@ class EditProfileData {
   late final String createdAt;
   late final String updatedAt;
 
-  EditProfileData.fromJson(Map<String, dynamic> json){
+  EditProfileModel.fromJson(Map<String, dynamic> json){
     id = json['id'];
     name = json['name'];
     otp = json['otp'];

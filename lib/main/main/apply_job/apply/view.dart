@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/design/file_picker.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
+import 'package:jobsque/features/main/my_account/profile/add_portfolio/bloc.dart';
+import 'package:jobsque/features/main/my_account/profile/biodata/bloc.dart';
 import 'package:jobsque/main/main/apply_job/upload_profile/view.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/design/app_input.dart';
 
@@ -22,16 +27,20 @@ class _ApplyViewState extends State<ApplyView> {
   bool firstSubmitted = false;
   bool secondSubmitted = false;
   bool thirdSubmitted = false;
+  final bloc = GetIt.I<AddPortfolioBloc>()..add(GetAddPortfolioEvent());
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         title: Text("Apply Job"),
         centerTitle: true,
       ),
-      body: SizedBox(
-        child: Stepper(
+      body: Form(
+        key: bloc.formKey,
+        child: SizedBox(
+          child: Stepper(
 
 
             type: StepperType.horizontal,
@@ -47,9 +56,9 @@ class _ApplyViewState extends State<ApplyView> {
               };
 
             },
-          onStepTapped: (step) =>setState(() => currentStep=step,),
+            onStepTapped: (step) =>setState(() => currentStep=step,),
             onStepCancel: () {
-           currentStep == 0 ? null:  setState(() => currentStep -= 1,);
+              currentStep == 0 ? null:  setState(() => currentStep -= 1,);
 
             },
             controlsBuilder: (context, onStepContinue) {
@@ -69,6 +78,7 @@ class _ApplyViewState extends State<ApplyView> {
               );
             },
 
+          ),
         ),
       ),
     );
@@ -353,11 +363,30 @@ class _ApplyViewState extends State<ApplyView> {
                     Container(
                       width: 327,
                       height: 221,
-                      child: UploadPDFScreen(),
+                      child:  UploadPDFScreen()
                     ),
                   ],
                 ),
               ),
             )),
       ];
+}
+class _Loading extends StatelessWidget {
+  const _Loading({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Shimmer.fromColors(
+        child: Container(
+          height: 180.h,
+          margin: EdgeInsets.only(top: 16),
+          width: double.infinity,
+          color: Colors.grey.withOpacity(.6),
+        ),
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.white,
+      ),
+    );
+  }
 }

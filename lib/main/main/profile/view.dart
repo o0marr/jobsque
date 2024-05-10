@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
+import 'package:jobsque/features/main/my_account/profile/profile/bloc.dart';
 import 'package:jobsque/main/auth/register/register.dart';
 import 'package:jobsque/main/main/apply_job/view.dart';
 import 'package:jobsque/main/main/home_screen/hi/view.dart';
@@ -24,6 +26,8 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  final bloc = GetIt.I<ProfileBloc>();
+
   int _currentIndex = 0;
   List<Widget> body = const [
     Icon(Icons.home),
@@ -337,7 +341,7 @@ class _ProfileViewState extends State<ProfileView> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         selectedItemColor: Colors.black,
         onTap: (int newIndex) {
           setState(() {

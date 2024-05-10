@@ -1261,7 +1261,7 @@ class _HiViewState extends State<HiView> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         selectedItemColor: Colors.black,
         onTap: (int newIndex) {
           setState(() {

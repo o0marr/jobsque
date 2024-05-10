@@ -14,8 +14,6 @@ import '../../../core/design/app_input.dart';
 import '../../../core/logic/input_validator.dart';
 import '../../../features/auth/auth/register/bloc.dart';
 
-
-
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
 
@@ -24,7 +22,7 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  final bloc = GetIt.I<RegisterBloc>();
+  final bloc = GetIt.I<RegisterBloc>()..add(GetRegisterEvent());
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +43,7 @@ class _RegisterViewState extends State<RegisterView> {
                     Text(
                       "Create Account",
                       style:
-                      TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
                     ),
                     SizedBox(
                       height: 8,
@@ -64,6 +62,7 @@ class _RegisterViewState extends State<RegisterView> {
                       controller: bloc.nameController,
                       label: "Username",
                       inputType: TextInputType.text,
+                      isName: true,
                       prefixIcon: "profile.png",
                     ),
                     SizedBox(
@@ -83,16 +82,17 @@ class _RegisterViewState extends State<RegisterView> {
                           AppInput(
                             controller: bloc.passwordController,
                             label: "password",
-                            validator: InputValidator.password,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Password must be Entered";
+                              } else if (value.length < 7) {
+                                return "Password must be at least 8 characters";
+                              } else {
+                                return null;
+                              }
+                            },
                             isPassword: true,
                             prefixIcon: "lock.png",
-                          ),
-                          Text(
-                            "Password must be at least 8 characters",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                color: Color(0xff1C192D)),
                           ),
                         ],
                       ),
@@ -121,24 +121,18 @@ class _RegisterViewState extends State<RegisterView> {
                         ],
                       ),
                     ),
-                    BlocBuilder(
-                        bloc: bloc,
-                        builder: (context, state) {
-                          if (state is GetRegisterLoadingState) {
-                            return Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else {
-                            return AppButton(text:
-                            "Create account",
-                              onPress: () async {
-                              navigateTo(JobTitleView());
-                              },
-
-                            );
+                    BlocConsumer(
+                        listener: (context, state) {
+                          if(state is GetRegisterSuccessState){
+                            navigateTo(JobTitleView());
                           }
-                        }
-                    ),
+                        },
+                        bloc: bloc,
+                        builder: (context, state) => AppButton(
+                            text: "Create account",
+                            onPress: () async {
+                              bloc.add(GetRegisterEvent());
+                            })),
                     SizedBox(
                       height: 12,
                     ),
@@ -184,7 +178,9 @@ class _RegisterViewState extends State<RegisterView> {
                                   )
                                 ]),
                               )),
-                          SizedBox(width: 19,),
+                          SizedBox(
+                            width: 19,
+                          ),
                           ElevatedButton(
                               onPressed: () {
                                 Link("https://www.facebook.com/");

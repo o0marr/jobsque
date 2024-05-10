@@ -1,5 +1,5 @@
 part of 'bloc.dart';
 
-class ProfileEvents {}
+class ProfileDataEvents {}
 
-class GetProfileEvent extends ProfileEvents {}
+class GetProfileDataEvent extends ProfileDataEvents {}

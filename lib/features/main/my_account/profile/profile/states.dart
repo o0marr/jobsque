@@ -1,17 +1,21 @@
 part of 'bloc.dart';
 
-class ProfileStates {}
+class ProfileDataStates {}
 
-class GetProfileLoadingState extends ProfileStates {}
+class GetProfileDataLoadingState extends ProfileDataStates {}
 
-class GetProfileSuccessState extends ProfileStates {
+class GetProfileDataSuccessState extends ProfileDataStates {
   final String msg;
 
-  GetProfileSuccessState({required this.msg});
+  GetProfileDataSuccessState({required this.msg}){
+    showMessage(msg,isSuccess: true);
+  }
 }
 
-class GetProfileFailedState extends ProfileStates {
+class GetProfileDataFailedState extends ProfileDataStates {
   final String msg;
 
-  GetProfileFailedState({required this.msg});
+  GetProfileDataFailedState({required this.msg}){
+    showMessage(msg);
+  }
 }

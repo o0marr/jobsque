@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
 import 'package:jobsque/core/logic/input_validator.dart';
+import 'package:jobsque/features/auth/auth/edit_profile/model.dart';
 import 'package:jobsque/main/auth/job_title/job_title.dart';
 
 import '../../../core/design/app_button.dart';
@@ -16,7 +17,8 @@ import '../../../features/main/my_account/profile/edit_profile/bloc.dart';
 
 
 class EditProfileView extends StatefulWidget {
-  const EditProfileView({Key? key}) : super(key: key);
+  final EditProfileModel model;
+  const EditProfileView({Key? key, required this.model}) : super(key: key);
 
   @override
   State<EditProfileView> createState() => _EditProfileViewState();

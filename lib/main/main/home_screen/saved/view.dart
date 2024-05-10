@@ -2263,69 +2263,68 @@ class _SavedViewState extends State<SavedView> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.black,
-        onTap: (int newIndex) {
-          setState(() {
-            _currentIndex = newIndex;
-            if (newIndex == 0) {
-              navigateTo(HiView());
-            };
-            if (newIndex == 1) {
-              navigateTo(MessagesView());
-            };
-            if (newIndex == 2) {
-              navigateTo(ApplyJobView());
-            };
-            if (newIndex == 3) {
-              navigateTo(SavedView());
-            };
-            if (newIndex == 4) {
-              navigateTo(ProfileView());
-            };
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.black,
-            ),
-            label: "Home",
+      ),bottomNavigationBar: BottomNavigationBar(
+      currentIndex: _currentIndex,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.black,
+      onTap: (int newIndex) {
+        setState(() {
+          _currentIndex = newIndex;
+          if (newIndex == 0) {
+            navigateTo(HiView());
+          };
+          if (newIndex == 1) {
+            navigateTo(MessagesView());
+          };
+          if (newIndex == 2) {
+            navigateTo(ApplyJobView());
+          };
+          if (newIndex == 3) {
+            navigateTo(SavedView());
+          };
+          if (newIndex == 4) {
+            navigateTo(ProfileView());
+          };
+        });
+      },
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            color: Colors.black,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mail,
-              color: Colors.black,
-            ),
-            label: "Messages",
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.mail,
+            color: Colors.black,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_bag_outlined,
-              color: Colors.black,
-            ),
-            label: "Applied",
+          label: "Messages",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.shopping_bag_outlined,
+            color: Colors.black,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.archive_outlined,
-              color: Colors.black,
-            ),
-            label: "Saved",
+          label: "Applied",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.archive_outlined,
+            color: Colors.black,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.black,
-            ),
-            label: "Profile",
+          label: "Saved",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.person,
+            color: Colors.black,
           ),
-        ],
-      ),
+          label: "Profile",
+        ),
+      ],
+    ),
     );
   }
 }

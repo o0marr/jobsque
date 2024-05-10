@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobsque/core/logic/dio_helper.dart';
 import 'package:jobsque/features/auth/auth/edit_profile/model.dart';
 
 
@@ -24,8 +25,8 @@ class EditProfileBloc extends Bloc<EditProfileEvents, EditProfileStates> {
   Future<void> _getData(GetEditProfileEvent event,
       Emitter<EditProfileStates> emit,) async {
     emit(GetEditProfileLoadingState());
-    final response= await Dio().get("https://project2.amit-learning.com/api/profile/auth/user/update?");
+    final response= await DioHelper.send("profile/auth/user/update?");
     final model =EditProfileData.fromJson(response.data);
-    emit(GetEditProfileSuccessState(msg: "Success"));
+    emit(GetEditProfileSuccessState(msg: "Success",list: model.list));
   }
 }

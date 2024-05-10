@@ -6,8 +6,11 @@ class GetEditProfileLoadingState extends EditProfileStates {}
 
 class GetEditProfileSuccessState extends EditProfileStates {
   final String msg;
+  final List<EditProfileModel>list;
 
-  GetEditProfileSuccessState({required this.msg});
+
+
+  GetEditProfileSuccessState({required this.msg,required this.list});
 }
 
 class GetEditProfileFailedState extends EditProfileStates {

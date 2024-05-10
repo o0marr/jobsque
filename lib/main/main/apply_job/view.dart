@@ -865,7 +865,7 @@ class _ApplyJobViewState extends State<ApplyJobView> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         selectedItemColor: Colors.black,
         onTap: (int newIndex) {
           setState(() {
@@ -928,24 +928,3 @@ class _ApplyJobViewState extends State<ApplyJobView> {
     );
   }
 }
-class _Loading extends StatelessWidget {
-  const _Loading({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Shimmer.fromColors(
-        child: Container(
-          height: 180,
-          margin: EdgeInsets.only(top: 16),
-          width: double.infinity,
-          color: Colors.grey.withOpacity(.6),
-        ),
-        period: Duration(seconds: 2),
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.white,
-      ),
-    );
-  }
-}
-

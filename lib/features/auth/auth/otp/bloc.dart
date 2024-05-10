@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/logic/helper_methods.dart';
 import 'model.dart';
 
 part 'events.dart';

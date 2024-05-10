@@ -13,7 +13,7 @@ class AddPortfolio {
     exception = json['exception'];
     file = json['file'];
     line = json['line'];
-    list = List.from(json['trace']??[]).map((e) => AddPortfolioData.fromJson(e)).toList();
+    list = List.from(json['data']??[]).map((e) => AddPortfolioData.fromJson(e)).toList();
   }
 
 

@@ -8,6 +8,7 @@ import 'package:jobsque/core/design/app_image.dart';
 import 'package:jobsque/core/logic/helper_methods.dart';
 import 'package:jobsque/core/logic/input_validator.dart';
 import 'package:jobsque/features/auth/auth/login/bloc.dart';
+import 'package:jobsque/features/auth/auth/register/bloc.dart';
 import 'package:jobsque/main/auth/job_title/job_title.dart';
 import 'package:jobsque/main/auth/reset_password/reset_password.dart';
 import 'package:jobsque/main/main/home_screen/hi/view.dart';
@@ -24,7 +25,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final bloc = GetIt.I<LoginBloc>();
+  final bloc = GetIt.I<LoginBloc>()..add(GetLoginEvent());
   bool isChecked=true;
 
 
@@ -64,10 +65,10 @@ class _LoginViewState extends State<LoginView> {
                       height: 44,
                     ),
                     AppInput(
-                      controller: bloc.nameController,
-                      label: "Username",
+                      controller: bloc.emailController,
+                      label: "Email",
                       inputType: TextInputType.text,
-                      prefixIcon: "profile.png",
+                      prefixIcon: "Email.png",
                     ),
                     SizedBox(
                       height: 16.h,
@@ -79,11 +80,18 @@ class _LoginViewState extends State<LoginView> {
                           AppInput(
                             controller: bloc.passwordController,
                             label: "password",
-                            validator: InputValidator.password,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Password must be Entered";
+                              } else if (value.length < 7) {
+                                return "Password must be at least 8 characters";
+                              } else {
+                                return null;
+                              }
+                            },
                             isPassword: true,
                             prefixIcon: "lock.png",
                           ),
-
                         ],
                       ),
                     ),
@@ -137,24 +145,18 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
                     SizedBox(height: 50,),
-                    BlocBuilder(
-                        bloc: bloc,
-                        builder: (context, state) {
-                          if (state is LoginLoadingState) {
-                            return Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else {
-                            return AppButton(text:
-                            "Login",
-                              onPress: () async {
-                                navigateTo(HiView());
-                              },
-
-                            );
+                    BlocConsumer(
+                        listener: (context, state) {
+                          if(state is GetLoginSuccessState){
+                            navigateTo(JobTitleView());
                           }
-                        }
-                    ),
+                        },
+                        bloc: bloc,
+                        builder: (context, state) => AppButton(
+                            text: "Login",
+                            onPress: () async {
+                              bloc.add(GetLoginEvent());
+                            })),
                     SizedBox(
                       height: 12,
                     ),
