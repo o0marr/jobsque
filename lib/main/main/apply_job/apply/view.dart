@@ -27,7 +27,6 @@ class _ApplyViewState extends State<ApplyView> {
   bool firstSubmitted = false;
   bool secondSubmitted = false;
   bool thirdSubmitted = false;
-  final bloc = GetIt.I<AddPortfolioBloc>()..add(GetAddPortfolioEvent());
 
 
   @override
@@ -38,7 +37,6 @@ class _ApplyViewState extends State<ApplyView> {
         centerTitle: true,
       ),
       body: Form(
-        key: bloc.formKey,
         child: SizedBox(
           child: Stepper(
 

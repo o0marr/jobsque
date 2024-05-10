@@ -53,11 +53,7 @@ class _AppInputState extends State<AppInput> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          AppImage(
-                            "FLAG.png",
-                            height: 20.h,
-                            width: 32.w,
-                          ),
+
                           SizedBox(
                             height: 2.h,
                           ),

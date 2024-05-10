@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jobsque/main/auth/create_password/view.dart';
@@ -17,11 +19,13 @@ import 'package:jobsque/main/main/apply_job/view.dart';
 import 'package:jobsque/main/main/home_screen/hi/view.dart';
 import 'package:jobsque/main/main/home_screen/search_not_found/view.dart';
 import 'package:jobsque/main/main/home_screen/searches2/view%20.dart';
+import 'package:jobsque/main/main/profile/change_password/view.dart';
 import 'package:jobsque/main/main/profile/complete_profile/view.dart';
 import 'package:jobsque/main/main/profile/language/view.dart';
 import 'package:jobsque/main/main/profile/view.dart';
 
 import 'core/logic/cache_helper.dart';
+import 'core/logic/firebase_helper.dart';
 import 'core/logic/helper_methods.dart';
 import 'features/get_it.dart';
 import 'firebase_options.dart';
@@ -41,7 +45,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await CachHelper.init();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
+  if (!kIsWeb) {
+    final firebaseHelper=FirebaseHelper();
+    await firebaseHelper.setupFlutterNotifications();
+    firebaseHelper.getToken();
+  }
   initGetIt();
   runApp(
     EasyLocalization(
@@ -60,7 +70,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      child:RegisterView(),
+      child:ApplyView(),
       designSize:  Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,

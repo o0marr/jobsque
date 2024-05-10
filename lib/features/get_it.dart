@@ -1,5 +1,7 @@
 
+import 'package:jobsque/features/auth/auth/change_password/bloc.dart';
 import 'package:jobsque/features/auth/auth/otp/bloc.dart';
+import 'package:jobsque/features/auth/auth/phone_number/bloc.dart';
 import 'package:jobsque/features/auth/auth/register/bloc.dart';
 
 import 'package:get_it/get_it.dart';
@@ -12,6 +14,7 @@ import 'package:jobsque/features/main/my_account/profile/get_portfolio/bloc.dart
 
 import 'package:jobsque/features/main/my_account/profile/login_and_security/bloc.dart';
 import 'package:jobsque/features/main/my_account/profile/notification/bloc.dart';
+import 'package:jobsque/features/main/my_account/profile/profile/bloc.dart';
 import 'package:jobsque/main/auth/edit_profile/view.dart';
 import 'package:jobsque/main/auth/password_changed/view.dart';
 
@@ -34,6 +37,9 @@ void initGetIt(){
   container.registerFactory(() =>  AddPortfolioBloc());
   container.registerFactory(() =>  JobFilterBloc());
   container.registerFactory(() =>  OtpBloc());
+  container.registerFactory(() =>  ProfileBloc());
+  container.registerFactory(() =>  ChangePasswordBloc());
+  container.registerFactory(() =>  PhoneNumberBloc());
 
 
 }

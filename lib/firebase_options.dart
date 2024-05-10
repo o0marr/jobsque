@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDQ-3_adgeB2fe4ox_FoOVREWv48836cDU',
-    appId: '1:942954729603:android:8ee1df60657699403e4bb6',
-    messagingSenderId: '942954729603',
-    projectId: 'thimar-amit',
-    storageBucket: 'thimar-amit.appspot.com',
+    apiKey: 'AIzaSyAbKRDL5Ap0PEft5qJst9567RdUr2NonFI',
+    appId: '1:332540629956:android:1af7afb4a69fe71e4e0a91',
+    messagingSenderId: '332540629956',
+    projectId: 'jobsque-f2035',
+    storageBucket: 'jobsque-f2035.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBH7S7GwXh5qTpMrqvQ4tlM0AMaT21bVu0',
-    appId: '1:942954729603:ios:637e1b185340f8653e4bb6',
-    messagingSenderId: '942954729603',
-    projectId: 'thimar-amit',
-    storageBucket: 'thimar-amit.appspot.com',
-    iosBundleId: 'com.thimar.thimarAmit',
+    apiKey: 'AIzaSyBs5PF35vH0voVbanYGD7hV42y51R9mGes',
+    appId: '1:332540629956:ios:eaf68b07fabafc584e0a91',
+    messagingSenderId: '332540629956',
+    projectId: 'jobsque-f2035',
+    storageBucket: 'jobsque-f2035.appspot.com',
+    iosBundleId: 'com.jobsque.jobsque',
   );
 }
