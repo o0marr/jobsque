@@ -22,13 +22,7 @@ class HiView extends StatefulWidget {
 
 class _HiViewState extends State<HiView> {
   int _currentIndex = 0;
-  List<Widget> body = const [
-    Icon(Icons.home),
-    Icon(Icons.mail),
-    Icon(Icons.shopping_bag_outlined),
-    Icon(Icons.archive_outlined),
-    Icon(Icons.person),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
